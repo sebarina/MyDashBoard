@@ -37,48 +37,13 @@ const SidebarContent: MenuItem[] = [
     heading: "UTILITIES",
     children: [
       {
-        name: "Typography",
+        name: "Graphy",
         icon: "solar:text-circle-outline",
         id: uniqueId(),
-        url: "/ui/typography",
-      },
-      {
-        name: "Table",
-        icon: "solar:bedside-table-3-linear",
-        id: uniqueId(),
-        url: "/ui/table",
-      },
-      {
-        name: "Form",
-        icon: "solar:password-minimalistic-outline",
-        id: uniqueId(),
-        url: "/ui/form",
-      },
-      {
-        name: "Shadow",
-        icon: "solar:airbuds-case-charge-outline",
-        id: uniqueId(),
-        url: "/ui/shadow",
-      },
+        url: "/result",
+      }
     ],
-  },
-  {
-    heading: "EXTRA",
-    children: [
-      {
-        name: "Icons",
-        icon: "solar:smile-circle-outline",
-        id: uniqueId(),
-        url: "/icons/solar",
-      },
-      {
-        name: "Sample Page",
-        icon: "solar:notes-minimalistic-outline",
-        id: uniqueId(),
-        url: "/sample-page",
-      },
-    ],
-  },
+  }
 ];
 
 export default SidebarContent;
