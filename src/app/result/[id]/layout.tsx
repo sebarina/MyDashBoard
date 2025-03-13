@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 export default function Layout({
   children,
 }: Readonly<{
@@ -8,9 +7,7 @@ export default function Layout({
 }>) {
   return (
     <div className="bg-lightgray mr-3 rounded-page min-h-[90vh]">
-            <div
-              className={`container mx-auto  py-30`}
-            >
+      <div className={`container mx-auto  py-30`}>
         {children}
       </div>
     </div>

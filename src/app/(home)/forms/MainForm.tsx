@@ -1,10 +1,13 @@
 'use client'; 
 import { Button, FileInput, Label, TextInput } from "flowbite-react";
-import Link from "next/link";
 import React from "react";
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState, useContext } from 'react';
+import { SearchDataContext } from "@/context/SearchDataContext";
 
 const MainForm = () => {
+  const { searchData, setSearchData } =  useContext(SearchDataContext);
+  const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -16,30 +19,36 @@ const MainForm = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    const formData = new FormData();
     if (!file) {
       setMessage('请选择一个文件。');
-      return;
+      // return;
+    } else {
+      formData.append('file', file);
     }
     setUploading(true);
     setMessage('');
 
-    const formData = new FormData();
-    formData.append('file', file);
+    
+    
 
     try {
-      const response = await fetch('/api/upload', {
+      const response = await fetch('/api/main/submit', {
         method: 'POST',
-        body: formData,
+        body: formData
       });
+      const data = await response.json();
+        if (data.code === 200) {
+          setMessage('查询成功。');
+          const id = data.data.id;
+          router.push('/result/' + id);
 
-      if (response.ok) {
-        const data = await response.json();
-        setMessage(`查询成功: ${data.filename}`);
-      } else {
-        setMessage('查询失败。');
-      }
+        } else {
+          setMessage('查询失败。');
+        
+        }
     } catch (error) {
+      console.log(error);
       setMessage('查询出错。');
     } finally {
       setUploading(false);
@@ -59,7 +68,6 @@ const MainForm = () => {
             sizing="md"
             placeholder="0000"
             className="form-control form-rounded-xl"
-            required
           />
         </div>
         <div className="mb-4">
@@ -72,7 +80,6 @@ const MainForm = () => {
             sizing="md"
             placeholder="⿰女庄"
             className="form-control form-rounded-xl"
-            required
           />
         </div>
         <div className="mb-4">
@@ -85,7 +92,6 @@ const MainForm = () => {
             sizing="md"
             placeholder="38.6"
             className="form-control form-rounded-xl"
-            required
           />
         </div>
         <div className="mb-4">

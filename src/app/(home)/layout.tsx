@@ -2,13 +2,14 @@
 import React from "react";
 import Sidebar from "./layout/vertical/sidebar/Sidebar";
 import Header from "./layout/vertical/header/Header";
-
+import SearchDataProvider from "@/context/SearchDataProvider";
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
+    <SearchDataProvider>
     <div className="flex w-full min-h-screen">
       <div className="page-wrapper flex w-full">
         {/* Header/sidebar */}
@@ -26,5 +27,6 @@ export default function Layout({
         </div>
       </div>
     </div>
+    </SearchDataProvider>
   );
 }

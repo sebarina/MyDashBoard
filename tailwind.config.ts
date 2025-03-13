@@ -6,7 +6,7 @@ const config: Config = {
   darkMode: "class",
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-
+    
     // Flowbite content
     flowbite.content(),
   ],
