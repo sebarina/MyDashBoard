@@ -1,6 +1,6 @@
 import React from "react";
 import ResultCards from "../../components/ResultCards";
-
+export const runtime = 'edge'; // Directly export the runtime
 
 export default async function resultPage({
   params,
