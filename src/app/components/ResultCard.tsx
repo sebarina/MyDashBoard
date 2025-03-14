@@ -1,10 +1,13 @@
 import React from "react";
 import Image from "next/image";
 
-export default  function ResultCard({cardData}){
+
+
+
+export default  function ResultCard({cardData}:{ cardData: { code: string; ai: string; bin: string; image1: string; image2: string; image3: string} }){
     const ResultCardData ={
         code: cardData.code,
-        ai: cardData.ai,
+        ai: cardData.code,
         bin: cardData.bin,
         image1: "data:image/png;base64," + cardData.image1,
         image2: "data:image/png;base64," + cardData.image2,

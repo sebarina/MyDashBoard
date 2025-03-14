@@ -1,20 +1,13 @@
 "use client";
 import React from "react";
 import ResultCard from "./ResultCard";
+import { list } from "postcss";
 
-export default  function ResultCards({cardsData}){
+export default  function ResultCards({cardsData} : { cardsData: {ids:[]; rs:[]}} ) {
 
   var { ids } = cardsData;
   var { rs } = cardsData;
   
-  // const ResultCardsData = parsedData.ids.map((item: any) => ({
-  //   code: item.code,
-  //   ai: item.ai,
-  //   bin: item.bin,
-  //   image1: "data:image/png;base64," + item.image1,
-  //   image2: "data:image/png;base64," + item.image2,
-  //   image3: "data:image/png;base64," + item.image3
-  // })); 
   if (!ids) {
     ids = [];
   }
